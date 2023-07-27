@@ -29,7 +29,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ```
 ### The source code for is included, Then run the back. `npm run dev`
 
+Clone th back-end repo : `https://github.com/acedesigns/next-netlify` rest of intructions are on it
+
 ### Create your angular app or just run this one by doing ` npm run start`
+
+Clone this repo, then inside of it run `npm i` then `npm run start`
  
 On the Angular side, there two things to note
 
