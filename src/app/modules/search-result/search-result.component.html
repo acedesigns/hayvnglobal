@@ -1,0 +1,98 @@
+<div class="container h-100" *ngIf=" isData ">
+  <div class="row h-100 justify-content-center align-items-center text-center">
+    <h3> Loading Data  &hellip; </h3>
+  </div>
+</div>
+
+<div class="row" *ngIf=" !isData ">
+
+  <div class="col">
+    <legend>Search result </legend>
+  </div>
+
+  <div class="col">
+    <div class="uk-align-right">
+      <h5>{{ pagination.count }} Products </h5>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-5" *ngFor="let article of searchResults; let i = index">
+
+  <div *ngFor=" let art of article; let z = index " class="col-md-4">
+    <div>
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-badge uk-label" *ngIf=" art.cost_in_credits !== 'unknown' ">
+          <span> {{ art?.cost_in_credits | thousandSuffix }}</span>
+        </div>
+        <div class="uk-card-media-top"></div>
+      </div>
+    </div>
+
+    <div class="uk-position-relative" uk-slideshow="animation: fade">
+
+      <ul class="uk-slideshow-items">
+        <li>
+          <img src="assets/images/photo.jpg" alt="" uk-cover>
+        </li>
+        <li>
+          <img src="assets/images/dark.jpg" alt="" uk-cover>
+        </li>
+        <li>
+          <img src="assets/images/light.jpg" alt="" uk-cover>
+        </li>
+      </ul>
+
+      <div class="uk-position-bottom-center uk-position-small">
+        <ul class="uk-thumbnav">
+          <li uk-slideshow-item="0"><a href="#"><img src="assets/images/photo.jpg" width="100" height="67" alt=""></a></li>
+          <li uk-slideshow-item="1"><a href="#"><img src="assets/images/dark.jpg" width="100" height="67" alt=""></a></li>
+          <li uk-slideshow-item="2"><a href="#"><img src="assets/images/light.jpg" width="100" height="67" alt=""></a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="uk-card uk-card-small uk-card-default uk-card-hover">
+
+      <div class="uk-card-header">
+        <div class="uk-card-badge uk-label" style="background: transparent;">
+          <span class="uk-label uk-label-success"
+                *ngIf=" art.consumables !== '0' && art.consumables !== 'none' && art.consumables !== 'unknown' ">
+            On sale {{ art.consumables }}
+          </span>
+        </div>
+        <h3 class="uk-card-title" style="width: 200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+          {{ art.name }}
+        </h3>
+
+      </div>
+
+
+      <div class="uk-card-body">
+        <p>{{ art.manufacturer }}</p>
+      </div>
+
+
+      <div class="uk-card-footer">
+        <div class="uk-text-center" uk-grid>
+
+          <div class="uk-align-left">
+            <a
+              [routerLink]="['/product-detail', art.url.substring(art.url.length - 2).slice(0, -1) , 'vehicles' ] "
+              class="uk-button uk-button-text">
+              Read more
+            </a>
+          </div>
+
+          <div class="uk-align-right">
+            <button type="button" (click)="addToCart(art)" class="uk-button uk-button-primary">Buy</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

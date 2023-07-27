@@ -1,0 +1,74 @@
+
+.cart-holder {
+  display: flex;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: rgb(38, 57, 77) -1px 0px 8px 0px;
+
+
+  &.cart-padding { padding: 3rem; }
+
+  h1,h2,h3,h4,h5,h6 { font-family: 'Raleway', 'Roboto', sans-serif !important; }
+  *+h2, *+h5 {margin-top: auto;}
+
+  .havn-card {
+    .havn-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #7b7b7b;
+    }
+  }
+
+  .items-content {
+    margin: 20px 0;
+    h1,h2,h3,h4,h5,h6 {margin: 0;}
+
+    .item-meta-desc {
+      h1,h2,h3,h4,h5,h6 {font-weight: bold; margin: 5px 10px}
+    }
+
+    .quantity {
+      display: flex; justify-content: space-between !important;
+
+      .form-control-sm {
+        height: 20px; margin-top: 18px;
+      }
+    }
+    .item-price {
+      display: flex;
+      align-content: center;
+      align-self: center;
+    }
+    .item-remove {
+      display: flex;
+      align-content: center;
+      align-self: center;
+    }
+  }
+
+  .content-summary {
+    .header {
+      border-bottom: 1px solid #7b7b7b;
+      margin: 0 0 20px 0;
+      padding: 0 0 20px 0;
+    }
+    *+h2, *+h5 {margin-top: auto;}
+
+    h1,h2,h3,h4,h5,h6 {margin: 0;}
+    .count-items {
+      display: flex; justify-content: space-between;
+    }
+    .checkout {
+      margin: 20px 0;
+    }
+  }
+}
+
+
+@media (max-width: 400px) {
+  // Styles for viewports narrower than 400 pixels.
+  .cart-holder {
+    box-shadow: none;
+    &.cart-padding { padding: 1rem; }
+  }
+}

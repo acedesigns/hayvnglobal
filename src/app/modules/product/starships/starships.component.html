@@ -1,0 +1,92 @@
+<div class="container h-100" *ngIf=" isData ">
+  <div class="row h-100 justify-content-center align-items-center text-center">
+    <h3> Loading Data  &hellip; </h3>
+  </div>
+</div>
+
+<div class="row" *ngIf=" !isData ">
+
+  <div class="col">
+    <form role="search">
+
+      <div class="row">
+        <div class="col-md-6">
+          <input class="form-control" type="search"
+                 [(ngModel)]="searchModel"
+                 [ngModelOptions]="{standalone: true}"
+                 placeholder="Search for starships"
+                 aria-label="Search">
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-outline-success my-2 my-sm-0" (click)="doSearch(searchModel, 'starships')" type="button">Search</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="col">
+    <div class="uk-align-right">
+      <h5>{{ pagination.count }} Products </h5>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-5" *ngFor="let article of starships; let i = index">
+
+  <div *ngFor=" let art of article; let z = index " class="col-md-4">
+    <div>
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-badge uk-label">
+          <span *ngIf=" art.cost_in_credits != 'unknown'"> {{ art.cost_in_credits | thousandSuffix }}</span>
+          <span *ngIf=" art.cost_in_credits == 'unknown' && art.consumables !== '0' && art.consumables !== 'none' ">
+            On Sale
+          </span>
+        </div>
+        <div class="uk-card-media-top">
+          <img src="assets/images/light.jpg" width="1800" height="1200" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="uk-card uk-card-small uk-card-default uk-card-hover">
+
+      <!--<div class="uk-card-media-top">
+        <img src="https://getuikit.com/docs/images/light.jpg" width="" height="" alt="">
+      </div>-->
+
+      <div class="uk-card-header">
+        <h3 class="uk-card-title"> {{ art.name }} </h3>
+      </div>
+
+
+      <div class="uk-card-body">
+        <p>{{ art.manufacturer }}</p>
+      </div>
+
+
+      <div class="uk-card-footer">
+        <div class="uk-text-center" uk-grid>
+
+          <div class="uk-align-left">
+            <a
+               [routerLink]="['/product-detail', art.url.substring(art.url.length - 2).slice(0, -1), 'starships'  ] "
+               class="uk-button uk-button-text">Read more</a>
+          </div>
+
+          <div class="uk-align-right">
+            <button class="uk-button uk-button-primary" (click)="addToCart(art)">Buy</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div *ngIf=" !isData ">
+  <app-pagination [pagination]="pagination" [currentPage]="currentPage" [totalPages]="totalPages"></app-pagination>
+</div>
+

@@ -1,0 +1,48 @@
+<div class="container h-100" *ngIf=" isData ">
+  <div class="row h-100 justify-content-center align-items-center text-center">
+    <h3> Loading Data  &hellip; </h3>
+  </div>
+</div>
+
+
+<div class="row justify-content-center" *ngIf=" !isData ">
+  <div class="col-md-6">
+
+    <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-card-body">
+      <div>
+        <div class="uk-card uk-card-default">
+          <div class="uk-card-badge uk-label">
+            <span *ngIf=" vehicleDetail?.cost_in_credits != 'unknown'"> {{ vehicleDetail?.cost_in_credits | thousandSuffix }}</span>
+          </div>
+          <div class="uk-card-media-top">
+          </div>
+        </div>
+      </div>
+      <div class="uk-card-header">
+        <div class="uk-grid-small uk-flex-middle" uk-grid>
+          <div class="uk-width-auto">
+            <img class="uk-border-circle" width="40" height="40" src="assets/images/avatar.jpg" alt="Avatar">
+          </div>
+          <div class="uk-width-expand">
+            <h3 class="uk-card-title uk-margin-remove-bottom">{{ vehicleDetail.name }}</h3>
+            <p class="uk-text-meta uk-margin-remove-top">
+              <time datetime="2016-04-01T19:00" [dateTime]="vehicleDetail.created">
+                {{vehicleDetail.created | date: 'dd/MM/yyyy'}}
+              </time>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="uk-card-body">
+        <h5>Manufacture </h5>
+        <p>{{ vehicleDetail.manufacturer }}</p>
+      </div>
+      <div class="uk-card-footer">
+        <a (click)="addToCart(vehicleDetail)" class="uk-button uk-button-text">Add to Cart</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+

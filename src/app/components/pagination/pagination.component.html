@@ -1,0 +1,16 @@
+<nav aria-label="page navigation example">
+  <ul class="uk-pagination">
+    <li>
+      <button class="uk-button uk-button-primary" [disabled]=" pagination.previous == null " (click)="prevPage()">
+        Previous
+      </button>
+    </li>
+
+    <li class="uk-margin-auto-left">
+      <button [ngStyle]="{'color': pagination.next == null ? '#999' : '#fff'}"
+              class="uk-button uk-button-primary" [disabled]=" pagination.next == null " (click)="nextPage(pagination)">
+        Next
+      </button>
+    </li>
+  </ul>
+</nav>

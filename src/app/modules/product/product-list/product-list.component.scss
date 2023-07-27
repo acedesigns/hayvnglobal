@@ -1,0 +1,17 @@
+:host {
+  .page {
+    visibility: visible;
+  }
+}
+
+nav.navigation {
+  display: block;
+  visibility: visible;
+  .uk-pagination {
+    visibility: visible;
+    .uk-pagination>*>* {
+      color: #fff;
+    }
+  }
+
+}

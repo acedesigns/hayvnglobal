@@ -1,0 +1,74 @@
+
+
+<div class="row justify-content-between cart-holder cart-padding">
+  <div class="col-md-8">
+    <div class="havn-card">
+      <header class="havn-header">
+        <h2> Shopping Cart </h2>
+        <h5> {{ items.length }} Items </h5>
+      </header>
+
+      <div class="items-content">
+        <div class="row">
+
+          <div *ngFor="let item of items; let i = index" style="display: flex">
+            <div class="col-md-2 col-lg-2 col-xl-2">
+              <img src="assets/images/light.jpg" width="225" height="150" alt="Example image">
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-xl-3 item-meta-desc">
+              <h5> {{ item.name }} </h5>
+              <h6> {{ item.manufacturer }} </h6>
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-xl-3 d-flex quantity">
+              <button class="btn btn-link px-2">
+                <span class="material-icons">remove</span>
+              </button>
+
+              <input id="form1" min="0" name="quantity" value="{{ productCount }}" type="number" class="form-control form-control-sm">
+
+              <button class="btn btn-link px-2" (click)="increaseQty(item)">
+                <span class="material-icons">add</span>
+              </button>
+            </div>
+
+            <div class="col-md-3 col-lg-2 col-xl-2 item-price">
+              <h3> {{ item.cost_in_credits | thousandSuffix }} </h3>
+            </div>
+
+            <div class="col-md-1 col-lg-1 col-xl-1 text-end item-remove">
+            <button class="btn btn-link px-2" (click)="remove(item)">
+              <span class="material-icons">close</span>
+            </button>
+          </div>
+         </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="content-summary">
+
+      <header class="header">
+        <h2> Summary </h2>
+      </header>
+
+
+      <div class="col count-items">
+        <h5> ITEMS {{ items.length }}</h5>
+        <h6> {{ cartTotal | thousandSuffix }} </h6>
+      </div>
+
+      <div class="col checkout" *ngIf=" items.length != 0 ">
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary" type="button">Checkout</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
